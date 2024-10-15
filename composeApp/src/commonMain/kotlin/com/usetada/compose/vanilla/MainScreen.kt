@@ -1,11 +1,17 @@
 package com.usetada.compose.vanilla
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Button
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import com.multiplatform.webview.web.WebView
 import com.multiplatform.webview.web.rememberWebViewState
 import com.multiplatform.webview.web.rememberWebViewStateWithHTMLData
@@ -17,6 +23,17 @@ fun MainScreen() {
     val webViewState = rememberWebViewStateWithHTMLData(defaultHtmlStyle.format(html)).apply {
         webSettings.isJavaScriptEnabled = true
     }
+
+    Column(modifier = Modifier.height(500.dp)) {
+//        WebView(webViewState)
+        WebViewKit(Modifier.height(400.dp))
+        Button(onClick = {
+            println("clicked")
+        }) {
+            Text("Click Me")
+        }
+    }
+
 //
 //    Column(
 //        modifier = Modifier.fillMaxSize().background(Color.Red)
@@ -27,8 +44,8 @@ fun MainScreen() {
 //        )
 //    }
 //    val webViewState = rememberWebViewState("https://www.google.com")
-    WebView(webViewState,modifier = Modifier
-        .fillMaxSize())
+//    WebView(webViewState,modifier = Modifier
+//        .fillMaxSize())
 //    Column(
 //        modifier = Modifier
 //            .fillMaxSize()
